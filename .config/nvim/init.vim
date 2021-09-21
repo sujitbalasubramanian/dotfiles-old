@@ -34,7 +34,7 @@ set background=dark
 let g:sonokai_style = 'default'
 "sonokai themes = 'default' 'atlantis' 'andromeda' 'shusia' 'maia'
 let g:tokyonight_style = 'night' " available: night, storm
-colorscheme tokyonight
+colorscheme sonokai
 "themes: monokai one-monokai one dracula codedark tokyonight sonokai
 
 "highlighting
@@ -78,9 +78,6 @@ let &t_SR.="\e[4 q"
 let &t_EI.="\e[1 q"
 let &t_ut=''
 
-"color highlighting configuration
-autocmd VimEnter,BufEnter,TabEnter * if &buftype !~ 'terminal' | exec "ColorHighlight" | endif
-
 "c++ syntax highlighting
 let g:cpp_member_variable_highlight = 1
 
@@ -106,6 +103,7 @@ function! RipgrepFzf(query, fullscreen)
   call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
 endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
 
 "Indent line customization
 "let g:indentLine_char = '|'
@@ -117,33 +115,12 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 let g:vim_current_word#highlight_twins = 1
 let g:vim_current_word#highlight_current_word = 0
 
-"vim wiki configuration
-let g:vimwiki_list = [{'path': '~/.vim/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
-
-"auto pair configuration
-let g:AutoPairsFlyMode = 0
-
-"instant markdown preview configuration
-"let g:instant_markdown_python = 1
-
-""tagbar configuration
-nmap <Leader>o :TagbarToggle<CR>
-nnoremap g] :call tagbar#jumpToNearbyTag(1, 'nearest', 's')<CR>
-nnoremap g[ :call tagbar#jumpToNearbyTag(-1, 'nearest', 's')<CR>
-"let g:tagbar_left = 1
-
-"prettier customization
-let g:prettier#autoformat = 1
-let g:prettier#autoformat_require_pragma = 0
-nmap <Leader>f <Plug>(Prettier)
-
-source ~/.vim/plug-config/lightline.vim
-source ~/.vim/plug-config/term.vim
-source ~/.vim/plug-config/ultisnip.vim
+source ~/.config/nvim/plug-config/lightline.vim
+source ~/.config/nvim/plug-config/term.vim
+source ~/.config/nvim/plug-config/cocconfig.vim
 source /usr/share/doc/fzf/examples/fzf.vim
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
 
 "Themes for Vim
 Plug 'tomasiser/vim-code-dark'                  "vscode theme
@@ -152,8 +129,6 @@ Plug 'crusoexia/vim-monokai'                    "monokai theme
 Plug 'sainnhe/sonokai'                          "sonokai theme
 Plug 'dracula/vim', { 'as': 'dracula' }         "dracula theme
 Plug 'fratajczak/one-monokai-vim'               "one monokai theme
-"Extra
-Plug 'vimwiki/vimwiki'                          "personal wiki
 "Distraction free writing
 Plug 'junegunn/goyo.vim'                        "focus writing
 Plug 'junegunn/limelight.vim'                   "focus writing
@@ -161,14 +136,13 @@ Plug 'junegunn/limelight.vim'                   "focus writing
 Plug 'preservim/nerdtree'                       "nerd tree
 Plug 'ryanoasis/vim-devicons'                   "icons for tree
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  "icon highlighting
-Plug 'preservim/tagbar'                         "outline bar
 Plug 'terryma/vim-multiple-cursors'             "multi cursor for vim
 Plug 'itchyny/lightline.vim'                    "lightline statusbar
-Plug 'jiangmiao/auto-pairs'                     "bracket auto pairs
 Plug 'Yggdroot/indentLine'                      "specify indentation
 Plug 'dominikduda/vim_current_word'             "highlight variable
 Plug 'mbbill/undotree'                          "undo tree
 Plug 'junegunn/fzf.vim'                         "fzf integration
+Plug 'antoinemadec/coc-fzf'                     "coc+fzf integration
 "git integration
 Plug 'airblade/vim-gitgutter'                   "color signs
 Plug 'tpope/vim-fugitive'                       "git tool
@@ -184,23 +158,13 @@ Plug 'uiiaoo/java-syntax.vim'                   "extra syntax for java
 Plug 'octol/vim-cpp-enhanced-highlight'         "extra syntax for c++
 Plug 'yuezk/vim-js'                             "extra syntax for js
 "Auto Completion
-Plug 'ycm-core/YouCompleteMe'                   "autocompletion tool
-Plug 'SirVer/ultisnips'                         "snippets
+Plug 'neoclide/coc.nvim', {'branch': 'release'} "autocomplete for nvim
 Plug 'honza/vim-snippets'                       "snippets 
 "Web Development Tools
 Plug 'turbio/bracey.vim',{'do': 'npm install --prefix server'} "live preview
-Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 Plug 'mattn/emmet-vim'                          "emmet for vim
-Plug 'chrisbra/Colorizer'                       "background Colorizer
-Plug 'prettier/vim-prettier', { 'do': 'npm install' } "prettier 
 Plug 'alvan/vim-closetag'                       "auto close tag
 Plug 'tpope/vim-surround'                       "auto rename tag + extra
 
 call plug#end()
-
-"gvim fonts
-if has("gui_running")
-    set guifont=FiraCode\ Nerd\ Font\ 12
-endif
-
 

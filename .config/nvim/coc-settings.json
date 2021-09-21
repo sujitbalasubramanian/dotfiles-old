@@ -1,0 +1,125 @@
+{
+  //file formatting
+  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "css",
+    "markdown",
+    "javascript",
+    "graphql",
+    "html",
+    "yaml",
+    "json",
+    "jsonc",
+    "python",
+    "sql"
+  ],
+  "coc.preferences.formatOnType": true,
+
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+
+  //symbols for autocompletion
+  "suggest.completionItemKindLabels": {
+    "method": "  ",
+    "function": "  ",
+    "variable": "[]",
+    "field": "  ",
+    "typeParameter": "<>",
+    "constant": "  ",
+    "class": " פּ ",
+    "interface": " 蘒",
+    "struct": "  ",
+    "event": "  ",
+    "operator": "  ",
+    "module": "  ",
+    "property": "  ",
+    "enum": " 練",
+    "reference": "  ",
+    "keyword": "  ",
+    "file": "  ",
+    "folder": " ﱮ ",
+    "color": "  ",
+    "unit": " 塞 ",
+    "snippet": "  ",
+    "text": "  ",
+    "constructor": "  ",
+    "value": "  ",
+    "enumMember": "  "
+  },
+
+  //symbols for diagnostics
+  "diagnostic.infoSign": "i",
+  "diagnostic.hintSign": "➤",
+  "diagnostic.warningSign": "⚠",
+  "diagnostic.errorSign": "✖",
+
+  //coc-explorer
+  "explorer.icon.enableNerdfont": true,
+  "explorer.quitOnOpen": false,
+  "explorer.position": "left",
+  "explorer.file.showHiddenFiles": false,
+  "explorer.file.column.clip.copy": "",
+  "explorer.file.column.clip.cut": "",
+  "explorer.keyMappings.global": {
+    "gk": "expandablePrev",
+    "gj": "expandableNext",
+
+    "<space>": "toggleSelection",
+    "<tab>": "actionMenu",
+
+    "h": "collapse",
+    "l": ["expandable?", "expand", "open"],
+    "J": ["toggleSelection", "nodeNext"],
+    "K": ["toggleSelection", "nodePrev"],
+    "<2-LeftMouse>": [
+      "expandable?",
+      ["expanded?", "collapse", "expand"],
+      "open"
+    ],
+    "o": ["expanded?", "collapse", "expand"],
+    "<cr>": ["expandable?", "cd", "open"],
+    "H": "open:split",
+    "S": "open:split:plain",
+    "V": "open:vsplit",
+    "<bs>": "gotoParent",
+
+    "Y": "copyFile",
+    "X": "cutFile",
+    "P": "pasteFile",
+    "dd": "delete",
+
+    "mf": "addFile",
+    "md": "addDirectory",
+    "r": "rename",
+
+    ".": "toggleHidden",
+    "R": "refresh",
+
+    "?": "help",
+    "q": "quit",
+    "<esc>": "esc",
+    "!": "systemExecute",
+    "gd": "listDrive",
+
+    "f": "search",
+    "F": "searchRecursive",
+
+    "gf": "gotoSource:file",
+    "gb": "gotoSource:buffer",
+
+    "[[": "sourcePrev",
+    "]]": "sourceNext",
+
+    "gp": "gitPrev",
+    "gn": "gitNext",
+    "ga": "gitStage",
+    "gr": "gitUnstage"
+  },
+
+  // python config
+  "python.linting.enabled": true,
+  "python.linting.pylintEnabled": true,
+
+  //"snippets.ultisnips.directories": ["UltiSnips", "~/.vim/UltiSnips/"],
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snips/",
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/12.0.1/clangd_12.0.1/bin/clangd"
+}

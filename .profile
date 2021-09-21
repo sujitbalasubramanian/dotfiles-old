@@ -42,5 +42,7 @@ source ~/.bash_completion/alacritty
 
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
+export FZF_DEFAULT_COMMAND="find"
+
 QT_QPA_PLATFORMTHEME=qt5ct
 
