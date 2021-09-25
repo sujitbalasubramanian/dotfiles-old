@@ -1,0 +1,5 @@
+fixscroll.sh &
+tint2 -c ~/.config/tint2/livia.tint2rc &
+compton &
+pnmixer &
+nitrogen --restore &
