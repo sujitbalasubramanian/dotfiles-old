@@ -1,5 +1,6 @@
-fixscroll.sh &
-tint2 -c ~/.config/tint2/livia.tint2rc &
+fixscroll &
+tint2 -c ~/.config/tint2/livia/livia.tint2rc &
 compton &
 pnmixer &
 nitrogen --restore &
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &

@@ -39,7 +39,7 @@ endfunction
 
 "lightline configuration
 let g:lightline = {
-      \ 'colorscheme': 'monokai',
+      \ 'colorscheme': 'tokyonight',
       \ 'separator': { 'left': '', 'right': '' },
       \ 'subseparator': { 'left': '', 'right': '' },
       \ 'active': {

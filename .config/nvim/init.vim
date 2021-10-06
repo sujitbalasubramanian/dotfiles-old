@@ -61,6 +61,14 @@ map <C-k> <C-w>K
 map <C-l> <C-w>L
 map <C-h> <C-w>H
 
+"moving lines
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
+
 "copy and paste
 inoremap <C-v> <Esc>"+p<Esc>ha
 vnoremap <C-c> "+y<CR>
@@ -80,9 +88,6 @@ let &t_ut=''
 
 "c++ syntax highlighting
 let g:cpp_member_variable_highlight = 1
-
-"vim multi cursor configuration
-let g:multi_cursor_select_all_key = '<C-a>'
 
 "nerd tree configuration
 nmap <C-t> :NERDTreeToggle<CR>
@@ -110,10 +115,15 @@ autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
 "let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 "let g:indentLine_leadingSpaceEnabled = 1
 "let g:indentLine_leadingSpaceChar = '·'
+let g:indentLine_fileTypeExclude = ["vimwiki", "coc-explorer", "help", "undotree", "diff"]
 
 "current word plugin configuration
 let g:vim_current_word#highlight_twins = 1
 let g:vim_current_word#highlight_current_word = 0
+
+"vim wiki configuration
+let g:vimwiki_list = [{'path': '~/.vim/vimwiki/',
+                      \ 'syntax': 'markdown', 'ext': '.md'}]
 
 source ~/.config/nvim/plug-config/lightline.vim
 source ~/.config/nvim/plug-config/term.vim
@@ -129,6 +139,8 @@ Plug 'crusoexia/vim-monokai'                    "monokai theme
 Plug 'sainnhe/sonokai'                          "sonokai theme
 Plug 'dracula/vim', { 'as': 'dracula' }         "dracula theme
 Plug 'fratajczak/one-monokai-vim'               "one monokai theme
+"Extra
+Plug 'vimwiki/vimwiki'                          "personal wiki
 "Distraction free writing
 Plug 'junegunn/goyo.vim'                        "focus writing
 Plug 'junegunn/limelight.vim'                   "focus writing

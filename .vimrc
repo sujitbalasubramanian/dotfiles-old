@@ -61,6 +61,12 @@ map <C-k> <C-w>K
 map <C-l> <C-w>L
 map <C-h> <C-w>H
 
+"moving lines
+nnoremap mj :m +1<CR>==
+nnoremap mk :m -2<CR>==
+vnoremap mj :m '>+1<CR>gv=gv
+vnoremap mk :m '<-2<CR>gv=gv
+
 "copy and paste
 inoremap <C-v> <Esc>"+p<Esc>ha
 vnoremap <C-c> "+y<CR>
@@ -112,6 +118,7 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 "let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 "let g:indentLine_leadingSpaceEnabled = 1
 "let g:indentLine_leadingSpaceChar = '·'
+let g:indentLine_fileTypeExclude = ["vimwiki", "coc-explorer", "help", "undotree", "diff"]
 
 "current word plugin configuration
 let g:vim_current_word#highlight_twins = 1
@@ -137,6 +144,10 @@ nnoremap g[ :call tagbar#jumpToNearbyTag(-1, 'nearest', 's')<CR>
 let g:prettier#autoformat = 1
 let g:prettier#autoformat_require_pragma = 0
 nmap <Leader>f <Plug>(Prettier)
+
+"youcompleteme configuration
+set completeopt=longest,menu
+let g:ycm_global_ycm_extra_conf='~/.vim/plugged/YouCompleteMe/.ycm_extra_conf.py'
 
 source ~/.vim/plug-config/lightline.vim
 source ~/.vim/plug-config/term.vim
@@ -202,5 +213,4 @@ call plug#end()
 if has("gui_running")
     set guifont=FiraCode\ Nerd\ Font\ 12
 endif
-
 

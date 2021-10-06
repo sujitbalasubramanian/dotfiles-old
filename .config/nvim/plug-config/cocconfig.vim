@@ -1,10 +1,9 @@
 let g:coc_global_extensions = [
       \ 'coc-json', 'coc-html', 'coc-css', 'coc-emmet',
-      \ 'coc-tsserver', 'coc-html-css-support',
+      \ 'coc-tsserver', 'coc-html-css-support', 'coc-sql',
       \ 'coc-markdown-preview-enhanced', 'coc-webview',
-      \ 'coc-clangd', 'coc-java', 'coc-omnisharp', 'coc-r-lsp',
-      \ 'coc-jedi', 'coc-pyright', 'coc-lua', 'coc-sh', 'coc-vimlsp',
-      \ 'coc-rust-analyzer', 'coc-go', 'coc-sql',
+      \ 'coc-clangd', 'coc-java', 'coc-r-lsp', 'coc-vimlsp',
+      \ 'coc-jedi', 'coc-lua', 'coc-sh',
       \ 'coc-explorer', 'coc-highlight', 'coc-prettier',
       \ 'coc-pairs', 'coc-snippets', 'coc-marketplace'
       \]

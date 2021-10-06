@@ -27,20 +27,25 @@ fi
 
 export PATH="$HOME/.local/bin:$PATH"
 
-source "$HOME/.cargo/env"
-
-export PATH="$HOME/.cargo/bin:$PATH"
-
-export GOPATH="$HOME/.go" 
+export GOPATH="$HOME/.local/share/go" 
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 
 export DENO_INSTALL="/home/sujit/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 
 source "$HOME/.cargo/env"
-source ~/.bash_completion/alacritty
 
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
+source "$HOME/Documents/scripts/env"
+
+if [ -x "$(command -v fzf)"  ]
+then
+    source /usr/share/doc/fzf/examples/completion.bash
+    source /usr/share/doc/fzf/examples/key-bindings.bash
+fi
+
+source ~/Downloads/softwares/alacritty/extra/completions/alacritty.bash
+
+#export DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 export FZF_DEFAULT_COMMAND="find"
 
