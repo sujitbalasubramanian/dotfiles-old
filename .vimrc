@@ -119,6 +119,7 @@ command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 "let g:indentLine_leadingSpaceEnabled = 1
 "let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_fileTypeExclude = ["vimwiki", "coc-explorer", "help", "undotree", "diff"]
+autocmd VimEnter,BufEnter * IndentLinesReset
 
 "current word plugin configuration
 let g:vim_current_word#highlight_twins = 1
@@ -200,7 +201,7 @@ Plug 'SirVer/ultisnips'                         "snippets
 Plug 'honza/vim-snippets'                       "snippets 
 "Web Development Tools
 Plug 'turbio/bracey.vim',{'do': 'npm install --prefix server'} "live preview
-Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'mattn/emmet-vim'                          "emmet for vim
 Plug 'chrisbra/Colorizer'                       "background Colorizer
 Plug 'prettier/vim-prettier', { 'do': 'npm install' } "prettier 

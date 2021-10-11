@@ -1,6 +1,5 @@
 "=====================================
 "Author: Sujit Balasubramanian
-"URL:
 "=====================================
 
 function! Compile()
@@ -39,7 +38,7 @@ function! CompileandRun()
     endif 
 endfunction 
 
-function Lanch()
+function Launch()
     if &filetype == 'html'
         exec "!firefox %"
     elseif &filetype == 'md' || &filetype == 'markdown'
@@ -50,5 +49,17 @@ endfunction
 command! Run call Run()
 command! Compile call Compile()
 command! Compilerun call CompileandRun()
-command! Lanch call Lanch()
+command! Launch call Launch()
 
+map <F8> :call Compile()<CR>
+map! <F8> <Esc>:call Compile()<CR>
+autocmd VimEnter,BufEnter * 
+            \if &filetype == 'html' || &filetype == 'markdown' 
+                \ | map <F9> :call Launch()<CR>
+                \ | map! <F9> <Esc>:call Launch()<CR>
+            \ | else
+                \ | map <F9> :call Run()<CR>
+                \ | map! <F9> <Esc>:call Run<CR> 
+            \ | endif
+map <F10> :call CompileandRun()<CR>
+map! <F10> <Esc>:call CompileandRun()<CR>

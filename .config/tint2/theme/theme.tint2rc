@@ -195,15 +195,15 @@ ac_disconnected_cmd =
 #-------------------------------------
 # Button 1
 button = new
-button_icon = ~/.config/tint2/livia/apps.png
+button_icon = ~/.config/tint2/theme/debian.png
 button_text = 
-button_lclick_command = ~/.config/tint2/livia/launch
+button_lclick_command = ~/.config/tint2/theme/launch
 button_rclick_command = 
 button_mclick_command = 
 button_uwheel_command = 
 button_dwheel_command = 
 button_font_color = #000000 100
-button_padding = 12 0
+button_padding = 12 8
 button_background_id = 1
 button_centered = 0
 button_max_icon_size = 0

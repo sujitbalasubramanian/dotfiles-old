@@ -19,6 +19,7 @@ set backupcopy=yes
 set noswapfile
 set incsearch
 set hlsearch
+set inccommand=nosplit
 set cursorline
 set splitright splitbelow
 set termguicolors
@@ -116,6 +117,7 @@ autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
 "let g:indentLine_leadingSpaceEnabled = 1
 "let g:indentLine_leadingSpaceChar = '·'
 let g:indentLine_fileTypeExclude = ["vimwiki", "coc-explorer", "help", "undotree", "diff"]
+autocmd VimEnter,BufEnter * IndentLinesReset
 
 "current word plugin configuration
 let g:vim_current_word#highlight_twins = 1

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=3.9.2
+Type=Application
+Name=Python3
+Comment=Python interpreter
+Exec=python3
+Icon=python
+Terminal=true
+StartupNotify=false
+Categories=Programming;Development;Science;Math;
