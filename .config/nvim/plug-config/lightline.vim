@@ -1,76 +1,86 @@
 set noshowmode
 
+"few git features
 function! Lightlinegit()
-    let l:branch = FugitiveHead()
-    return l:branch ==# '' ? '' : ' ' . l:branch
+  let l:branch = FugitiveHead()
+  return l:branch ==# '' ? '' : ' ' . l:branch . ' ' . 
+        \ join(filter(map(['+','~','-'], {i,v -> v.':'.GitGutterGetHunkSummary()[i]}), 'v:val[-1:]'), ' ')
 endfunction
 
+"function! GitGutter()
+"  return join(filter(map(['+','~','-'], {i,v -> v.':'.GitGutterGetHunkSummary()[i]}), 'v:val[-1:]'), ' ')
+"endfunction
+
+"filename respective to window size
 function! FilenameForLightline()
-      if winwidth(0) > 80
-            return WebDevIconsGetFileTypeSymbol() . ' ' . expand('%:~:p')
-      else
-            return WebDevIconsGetFileTypeSymbol() . ' ' . expand('%:t')
-      endif
+  if winwidth(0) > 80
+    return WebDevIconsGetFileTypeSymbol() . ' ' . expand('%:~:p')
+  else
+    return WebDevIconsGetFileTypeSymbol() . ' ' . expand('%:t')
+  endif
 endfunction
 
+"current function name
 function! CocCurrentFunction()
-    return get(b:, 'coc_current_function', '')
+  return get(b:, 'coc_current_function', '')
 endfunction
 
+"symbol for filename, encoding, filetype, extra...
 function! LightLineReadOnly()
   return &readonly ? '' : ''
 endfunction
 
 function! LightlineFileformatandEncoding()
-      if exists('*WebDevIconsGetFileFormatSymbol')
-            return &fenc . ' ' . WebDevIconsGetFileFormatSymbol()
-      endif
-            return &fileformat
+  if exists('*WebDevIconsGetFileFormatSymbol')
+    return &fenc . ' ' . WebDevIconsGetFileFormatSymbol()
+  endif
+  return &fileformat
 endfunction
 
 function! LightlineFiletype()
-      if exists('*WebDevIconsGetFileTypeSymbol')
-            return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' .
-                              \ WebDevIconsGetFileTypeSymbol() : 'no ft') : &filetype
-      endif
-            return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : &filetype
+  if exists('*WebDevIconsGetFileTypeSymbol')
+    return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype . ' ' .
+          \ WebDevIconsGetFileTypeSymbol() : 'no ft') : &filetype
+  endif
+  return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : &filetype
 endfunction
 
-function! LightlineWebDevIcons(n)
+"customized tabline
+function! TabLineFilename(n)
   let l:bufnr = tabpagebuflist(a:n)[tabpagewinnr(a:n) - 1]
   return WebDevIconsGetFileTypeSymbol(bufname(l:bufnr)) . ' ' . fnamemodify(bufname(l:bufnr),':t')
 endfunction
 
 "lightline configuration
 let g:lightline = {
-  \ 'colorscheme': 'sonokai',
-  \ 'separator': { 'left': '', 'right': '' },
-  \ 'subseparator': { 'left': '', 'right': '' },
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'gitbranch', 'readonly', 'filename', 'cocstatus', 'currentfunction', 'modified' ] ],
-  \   'right': [ [ 'lineinfo' ],
-  \              [ 'percent' ],
-  \              [ 'fileformat','filetype' ] ]
-  \ },
-  \ 'tabline': {
-  \   'left': [ [ 'tabs' ] ],
-  \   'right': [ [ 'close' ], ],
-  \ },
-  \ 'tab_component_function': {
-  \   'filename': 'LightlineWebDevIcons',
-  \ },
-  \ 'component_function': {
-  \   'gitbranch': 'Lightlinegit',
-  \   'filename' : 'FilenameForLightline',
-  \   'cocstatus': 'coc#status',
-  \   'currentfunction': 'CocCurrentFunction',
-  \   'readonly' : 'LightLineReadOnly',
-  \   'fileformat': 'LightlineFileformatandEncoding',
-  \   'filetype' : 'LightlineFiletype'
-  \ },
-  \ 'component': {
-  \   'lineinfo': "%{printf('%d:%d/%d', line('.'),col('.'),  line('$'))}"
-  \ },
+      \ 'colorscheme': 'sonokai',
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' },
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'git', 'readonly', 'filename', 'cocstatus', 'currentfunction', 'modified' ] ],
+      \   'right': [ [ 'lineinfo' ],
+      \              [ 'percent' ],
+      \              [ 'fileformat','filetype' ] ]
+      \ },
+      \ 'tabline': {
+      \   'left': [ [ 'tabs' ] ],
+      \   'right': [ [ 'close' ], ],
+      \ },
+      \ 'tab_component_function': {
+      \   'filename': 'TabLineFilename',
+      \ },
+      \ 'component_function': {
+      \   'git': 'Lightlinegit',
+      \   'filename' : 'FilenameForLightline',
+      \   'cocstatus': 'coc#status',
+      \   'currentfunction': 'CocCurrentFunction',
+      \   'readonly' : 'LightLineReadOnly',
+      \   'fileformat': 'LightlineFileformatandEncoding',
+      \   'filetype' : 'LightlineFiletype'
+      \ },
+      \ 'component': {
+      \   'lineinfo': "%{printf('%d:%d/%d', line('.'),col('.'),  line('$'))}"
+      \ },
 \ }
 

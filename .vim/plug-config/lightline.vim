@@ -1,10 +1,17 @@
 set noshowmode
 
+"few git features
 function! Lightlinegit()
       let l:branch = FugitiveHead()
-      return l:branch ==# '' ? '' : ' ' . l:branch
+      return l:branch ==# '' ? '' : ' ' . l:branch . ' ' .
+                        \ join(filter(map(['+','~','-'], {i,v -> v.':'.GitGutterGetHunkSummary()[i]}), 'v:val[-1:]'), ' ')
 endfunction
 
+"function! GitGutter()
+"  return join(filter(map(['+','~','-'], {i,v -> v.':'.GitGutterGetHunkSummary()[i]}), 'v:val[-1:]'), ' ')
+"endfunction
+
+"filename respective to window size
 function! FilenameForLightline()
       if winwidth(0) > 80
             return WebDevIconsGetFileTypeSymbol() . ' ' . expand('%:~:p')
@@ -13,6 +20,7 @@ function! FilenameForLightline()
       endif
 endfunction
 
+"symbol for filename, encoding, filetype, extra...
 function! LightLineReadOnly()
       return &readonly ? '' : ''
 endfunction
@@ -32,7 +40,8 @@ function! LightlineFiletype()
             return winwidth(0) > 70 ? (strlen(&filetype) ? &filetype : 'no ft') : &filetype
 endfunction
 
-function! LightlineWebDevIcons(n)
+"customized tabline
+function! TabLineFilename(n)
   let l:bufnr = tabpagebuflist(a:n)[tabpagewinnr(a:n) - 1]
   return WebDevIconsGetFileTypeSymbol(bufname(l:bufnr)) . ' ' . fnamemodify(bufname(l:bufnr),':t')
 endfunction
@@ -44,7 +53,7 @@ let g:lightline = {
       \ 'subseparator': { 'left': '', 'right': '' },
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'tag', 'modified' ] ],
+      \             [ 'git', 'readonly', 'filename', 'tag', 'modified' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
       \              [ 'fileformat','filetype' ] ]
@@ -54,10 +63,10 @@ let g:lightline = {
       \   'right': [ [ 'close' ], ],
       \ },
       \ 'tab_component_function': {
-      \   'filename': 'LightlineWebDevIcons',
+      \   'filename': 'TabLineFilename',
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'Lightlinegit',
+      \   'git': 'Lightlinegit',
       \   'filename' : 'FilenameForLightline',
       \   'readonly' : 'LightLineReadOnly',
       \   'fileformat': 'LightlineFileformatandEncoding',
@@ -67,5 +76,5 @@ let g:lightline = {
       \   'tag' : "%{tagbar#currenttag('%s', '', 'f', 'scoped-stl')}",
       \   'lineinfo': "%{printf('%d:%d/%d', line('.'),col('.'),  line('$'))}"
       \ },
-  \ }
+\ }
 

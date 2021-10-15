@@ -14,27 +14,27 @@ endfunction
 
 function! Run()
     if &filetype == 'c' || &filetype == 'cpp' || &filetype == 'cc' || &filetype == 'c++'
-        exec "!./%<"
+        exec "te ./%<"
     elseif &filetype == 'java'
-        exec "!java %<"
+        exec "te java %<"
     elseif &filetype == 'python'
-        exec "!python3 %"
+        exec "te python3 %"
     elseif &filetype == 'sh' || &filetype =='bash'
         exec "!chmod +x %"
-        exec "!./%"
+        exec "te ./%"
     endif
 endfunction
 
 function! CompileandRun()
     if &filetype == 'c'
         exec "!gcc % -o %<"
-        exec "!./%<"
+        exec "te ./%<"
     elseif &filetype == 'cpp' || &filetype == 'cc' || &filetype == 'c++' 
         exec "!g++ % -o %<"
-        exec "!./%<"
+        exec "te ./%<"
     elseif &filetype == 'java'
         exec "!javac %"
-        exec "!java %<"
+        exec "te java %<"
     endif 
 endfunction 
 

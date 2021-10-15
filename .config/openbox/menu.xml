@@ -29,7 +29,8 @@
                 <execute>rofi -show drun</execute>
             </action>
         </item>
-              <item label="ScreenShot">
+        <separator />
+        <item label="ScreenShot">
             <action name="Execute">
                 <execute>scrot</execute>
             </action>

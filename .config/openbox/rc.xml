@@ -592,7 +592,7 @@
           <enabled>true</enabled>
           <name>Termite</name>
         </startupnotify>
-        <command>termite</command>
+        <command>termite -e "bash -l"</command>
       </action>
     </keybind>
     <!-- Keybindings for running applications -->

@@ -1,18 +1,35 @@
-XTerm*renderFont: true 
-XTerm*utf*: 2 
-XTerm*faceName: Hack
+! Xterm configuration
+XTerm*utf8: 2 
+XTerm*faceName: Hack Nerd Font 
+! XTerm*faceName: Hack Nerd Font:style:Bold
 XTerm*faceSize: 12
+XTerm*renderFont: true 
 XTerm*geometry: 80x25
 XTerm*metaSendsEscape: true
 XTerm*saveLines: 10000
 XTerm*cursorBlink: true
-XTerm*loginshell: true
+XTerm*loginShell: true
 
 XTerm.vt100.translations: #override \n\
-  Ctrl <Key> minus: smaller-vt-font() \n\
-  Ctrl <Key> plus: larger-vt-font()
+    Ctrl <Key> minus: smaller-vt-font() \n\
+    Ctrl <Key> plus: larger-vt-font() \n\
+    Shift Ctrl <Key> v: insert-selection(CLIPBOARD) \n\
+    Shift Ctrl <Key> c: copy-selection(CLIPBOARD) \n\
+    <KeyPress> Prior: scroll-back(1,page) \n\
+    <KeyPress> Next: scroll-forw(1,page)
 
-! Dracula Xresources palette
+! scrollbar & scrolling with scrollbar
+XTerm*scrollBar: false
+! XTerm*scrollBar: true
+! XTerm*rightScrollBar: true 
+! *VT100.scrollbar.translations:  #override \n\
+!     <Btn5Down>:     StartScroll(Forward) \n\
+!     <Btn1Down>:     StartScroll(Continuous) MoveThumb() NotifyThumb() \n\
+!     <Btn4Down>:     StartScroll(Backward) \n\
+!     <Btn1Motion>:   MoveThumb() NotifyThumb() \n\
+!     <BtnUp>:        NotifyScroll(Proportional) EndScroll()
+
+! Dracula Xresources palette for xterm
 XTerm*foreground: #F8F8F2
 XTerm*background: #282A36
 XTerm*color0:     #000000
@@ -31,3 +48,30 @@ XTerm*color6:     #8BE9FD
 XTerm*color14:    #9AEDFE
 XTerm*color7:     #BFBFBF
 XTerm*color15:    #E6E6E6
+
+! COLORS FOR SXIV
+Sxiv.foreground:   #F8F8F2
+Sxiv.background:   #282A36
+Sxiv.font: Hack Nerd Font:style=bold:size=11
+
+! Dracula Xresources palette for all other programs
+! This includes xterm and urxvt
+*.foreground: #F8F8F2
+*.background: #282A36
+*.color0:     #000000
+*.color8:     #4D4D4D
+*.color1:     #FF5555
+*.color9:     #FF6E67
+*.color2:     #50FA7B
+*.color10:    #5AF78E
+*.color3:     #F1FA8C
+*.color11:    #F4F99D
+*.color4:     #BD93F9
+*.color12:    #CAA9FA
+*.color5:     #FF79C6
+*.color13:    #FF92D0
+*.color6:     #8BE9FD
+*.color14:    #9AEDFE
+*.color7:     #BFBFBF
+*.color15:    #E6E6E6
+
