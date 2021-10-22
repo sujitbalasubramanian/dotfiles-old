@@ -7,6 +7,8 @@ set relativenumber
 set tabstop=4  softtabstop=4
 set shiftwidth=4
 set smartindent
+
+set ignorecase
 set smartcase
 set expandtab
 set undodir=~/.vim/undodir/

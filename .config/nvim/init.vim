@@ -29,6 +29,7 @@ set showtabline=2
 filetype plugin on
 set nocompatible
 set encoding=utf-8
+set ignorecase
 
 "theme configuration
 set background=dark

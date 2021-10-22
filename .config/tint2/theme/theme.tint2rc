@@ -154,7 +154,7 @@ launcher_tooltip = 0
 #-------------------------------------
 # Clock
 time1_format = %l:%M %P
-time2_format = %a, %b %d 20%y 
+time2_format = %a, %b %d %Y 
 time1_font = FiraCode Nerd Font Bold 10
 time1_timezone = 
 time2_timezone = 

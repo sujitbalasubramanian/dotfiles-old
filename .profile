@@ -25,7 +25,7 @@ export FZF_DEFAULT_COMMAND="find"
 
 source "$HOME/.cargo/env"
 
-source "$HOME/Documents/scripts/env"
+source /home/sujit/Documents/scripts/scriptsenv
 
 #fzf completion
 if [ -x "$(command -v fzf)"  ]

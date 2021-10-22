@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=3.9.2
+Type=Application
+Name=newsboat
+Comment=rss fead reader
+Exec=newsboat
+Icon=newsboat
+Terminal=true
+StartupNotify=false
+Categories=System;Network;Internet;

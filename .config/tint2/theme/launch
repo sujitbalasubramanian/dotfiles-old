@@ -2,7 +2,7 @@
 
 # Launch rofi with custom configuration
 rofi -show drun \
--display-drun "Search " \
+-display-drun "Search" \
 -hide-scrollbar true \
 -bw 2 \
 -lines 25 \
