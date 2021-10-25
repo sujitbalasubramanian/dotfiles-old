@@ -1,0 +1,45 @@
+#!/bin/sh
+
+#confrimation to overwrite or delete
+alias cp='cp -iv'
+alias rm='rm -iv'
+alias rmd='rm -rI'
+alias mv='mv -iv'
+alias bc='bc -ql'
+
+#color
+alias ls='ls --color=auto'
+alias ll='ls -l'
+alias la='ls -A'
+alias ld='ls -la'
+alias l='ls -CF'
+alias tree='tree -C'
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+
+#apt
+alias up='sudo apt update'
+alias ug='sudo apt upgrade'
+alias upug='sudo apt update && sudo apt upgrade'
+alias apti='sudo apt install'
+alias aptr='sudo apt remove'
+alias aptar='sudo apt remove --autoremove'
+alias apts='sudo apt search'
+
+#youtube-dl
+alias yta='youtube-dl -x --audio-format'
+
+#shortcut
+alias fd='fdfind'
+alias bat='batcat --paging=never'
+alias ccat='highlight --out-format=ansi --force'
+# Use neovim for vim if present.
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+
+#eye production settings
+alias nlight='redshift-gtk -O'
+alias knlight='redshift-gtk -x'
+

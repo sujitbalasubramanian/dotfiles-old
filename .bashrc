@@ -33,46 +33,11 @@ PS1='\[\033[01;34m\]\u \[\033[01;32m\]➜ \[\033[01;36m\]\w\[\033[01;33m\]$(pars
 #colorscript bin
 colorscript exec ghosts
 
-## ALIAS
-
-#confrimation to overwrite or delete
-alias cp='cp -i'
-alias rm='rm -i'
-alias mv='mv -i'
-
-#color
-alias ls='ls --color=auto'
-alias ll='ls -l'
-alias la='ls -A'
-alias l='ls -CF'
-alias ld='ls -la'
-alias tree='tree -C'
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias egrep='egrep --color=auto'
-
-#apt
-alias up='sudo apt update'
-alias ug='sudo apt upgrade'
-alias upug='sudo apt update && sudo apt upgrade'
-alias apti='sudo apt install'
-alias aptr='sudo apt remove'
-alias aptar='sudo apt remove --autoremove'
-alias apts='sudo apt search'
-
-#youtube-dl
-alias yta='youtube-dl -x --audio-format'
-
-#shortcut
-alias fd='fdfind'
-alias bat='batcat --paging=never'
-
-#extra alias
-alias ccat='highlight --out-format=ansi --force'
-
-#eye production settings
-alias nlight='redshift-gtk -O'
-alias knlight='redshift-gtk -x'
+source ~/Downloads/softwares/alacritty/extra/completions/alacritty.bash
+#fzf completion
+if [ -x "$(command -v fzf)"  ]
+then
+    source /usr/share/doc/fzf/examples/completion.bash
+    source /usr/share/doc/fzf/examples/key-bindings.bash
+fi
 

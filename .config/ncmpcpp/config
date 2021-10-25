@@ -1,3 +1,4 @@
+ncmpcpp_directory = "~/.config/ncmpcpp/"
 autocenter_mode = "yes"
 follow_now_playing_lyrics = "yes"
 ignore_leading_the = "yes"

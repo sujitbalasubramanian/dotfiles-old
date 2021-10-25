@@ -1,0 +1,49 @@
+#!/bin/bash 
+
+# cleanup
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_DATA_HOME="$HOME/.local/share"
+export XDG_CACHE_HOME="$HOME/.cache"
+export GOPATH="$XDG_DATA_HOME"/go
+export DENO_INSTALL="$XDG_DATA_HOME"/deno
+export CARGO_HOME="$XDG_DATA_HOME"/cargo
+export RUSTUP_HOME="$XDG_DATA_HOME"/rustup
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export LESSHISTFILE="$XDG_DATA_HOME"/lesshst
+export WGETRC="$XDG_CONFIG_HOME"/wget/wgetrc
+export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc-2.0
+#export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority # it doesn't work on dm
+export ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
+export MYSQL_HISTFILE="$XDG_DATA_HOME"/mysql_history
+
+# PATH
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$(find ~/Documents/scripts/ -type d -printf %p:):$PATH"
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+export PATH="$DENO_INSTALL/bin:$PATH"
+export PATH="$CARGO_HOME/bin:$PATH"
+
+# default programs
+export EDITOR="nvim"
+export TERMINAL="alacritty"
+export BROWSER="brave-browser"
+export READER="zathura"
+export VIDEO="mpv"
+export IMAGE="sxiv"
+export OPENER="xdg-open"
+export PAGER="less"
+
+# programs settings
+export FZF_DEFAULT_COMMAND="find ! -path './.cache/*'"
+export MOZ_USE_XINPUT2="1"	       # Mozilla smooth scrolling/touchpads.
+QT_QPA_PLATFORMTHEME=qt5ct             # Theme for qt apps
+#export DOTNET_CLI_TELEMETRY_OPTOUT=1  # Turn off microsoft telemetry
+
+# source bashrc in login shell
+source .config/shell/alias
+if [ -n "$BASH_VERSION" ]; then
+    if [ -f "$HOME/.bashrc" ]; then
+	. "$HOME/.bashrc"
+    fi
+fi
