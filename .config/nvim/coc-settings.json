@@ -121,5 +121,5 @@
 
   //"snippets.ultisnips.directories": ["UltiSnips", "~/.vim/UltiSnips/"],
   "snippets.userSnippetsDirectory": "~/.config/nvim/snips/",
-  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/12.0.1/clangd_12.0.1/bin/clangd"
+  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd"
 }

@@ -9,10 +9,10 @@ set shiftwidth=4
 set smartindent
 set smartcase
 set expandtab
-set undodir=~/.vim/undodir/
+set undodir=~/.local/share/nvim/undodir/
 set undofile 
 set backup
-set backupdir=~/.vim/backup//
+set backupdir=~/.local/share/nvim/backup//
 set backupcopy=yes
 "set nobackup
 "set dir=~/.vim/swp/
@@ -177,6 +177,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'} "autocomplete for nvim
 Plug 'honza/vim-snippets'                       "snippets 
 "Web Development Tools
 Plug 'turbio/bracey.vim',{'do': 'npm install --prefix server'} "live preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
 Plug 'mattn/emmet-vim'                          "emmet for vim
 Plug 'alvan/vim-closetag'                       "auto close tag
 Plug 'tpope/vim-surround'                       "auto rename tag + extra

@@ -15,11 +15,10 @@ autocmd TermOpen * nnoremap <buffer><LeftRelease> <LeftRelease>i
 
 "Language Interpreters
 "R interpreter
-command! Ri :sp term://R
-command! Rvi :vsp term://R
-command! Rti :tabnew term://R
+command! Ri :sp term://R 
+command! Rvi :vsp term://R 
+command! Rti :tabnew term://R 
 "python interpreter
-command! Pi :sp term://python3
+command! Pi :sp term://python3 
 command! Pvi :vsp term://python3 
-command! Pti :tabnew term://python3
-
+command! Pti :tabnew term://python3 

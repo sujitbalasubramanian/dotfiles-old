@@ -48,8 +48,10 @@ color listfocus_unread yellow black bold
 color info cyan black bold
 color article white default bold
 
-highlight all "---.*---" yellow
-highlight feedlist ".*(0/0))" black
+# highlight all "---.*---" yellow
+# highlight feedlist ".*(0/0))" black
+highlight feedlist "---.*---" green default bold
+highlight feedlist "^.*\\(0/0\\)" default default
 highlight article "(^Feed:.*|^Title:.*|^Author:.*)" cyan default bold
 highlight article "(^Link:.*|^Date:.*)" default default
 highlight article "https?://[^ ]+" green default

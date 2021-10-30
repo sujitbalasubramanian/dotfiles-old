@@ -1,1 +1,1 @@
-.config/shell/profile
+/home/sujit/.config/shell/profile

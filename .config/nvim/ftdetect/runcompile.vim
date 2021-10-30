@@ -1,6 +1,4 @@
-"=====================================
-"Author: Sujit Balasubramanian
-"=====================================
+"small compiler script
 
 function! Compile()
     if &filetype == 'c'

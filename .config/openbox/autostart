@@ -3,5 +3,4 @@ tint2 -c ~/.config/tint2/theme/theme.tint2rc &
 compton &
 pnmixer &
 nitrogen --restore &
-plank &
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
