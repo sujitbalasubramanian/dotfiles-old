@@ -1,0 +1,3 @@
+[submodule "/home/sujit/.local/bin/scripts"]
+	path = /home/sujit/.local/bin/scripts
+	url = https://github.com/sujitbalasubramanian/scripts

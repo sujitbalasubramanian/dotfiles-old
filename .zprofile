@@ -1,0 +1,1 @@
+/home/sujit/.config/shell/profile

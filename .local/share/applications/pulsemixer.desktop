@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.5.1
+Type=Application
+Name=pulsemixer
+Comment=pulse volume controler
+Exec=pulsemixer
+Icon=multimedia-volume-control 
+Terminal=true
+StartupNotify=false
+Categories=AudioVideo;Audio;

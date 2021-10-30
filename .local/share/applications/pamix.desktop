@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=pamix
+Comment=pulse volume controler
+Exec=pamix
+Icon=multimedia-volume-control
+Terminal=true
+StartupNotify=false
+Categories=AudioVideo;Audio;

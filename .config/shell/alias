@@ -20,6 +20,9 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
+#dotfile
+alias dotfile='/usr/bin/git --git-dir=$HOME/gitrepo/dotfiles.git --work-tree=$HOME'
+
 #apt
 alias up='sudo apt update'
 alias ug='sudo apt upgrade'
