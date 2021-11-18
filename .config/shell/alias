@@ -5,7 +5,6 @@ alias cp='cp -iv'
 alias rm='rm -iv'
 alias rmd='rm -rI'
 alias mv='mv -iv'
-alias bc='bc -ql'
 
 #color
 alias ls='ls --color=auto'
@@ -20,9 +19,6 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-#dotfile
-alias dotfile='/usr/bin/git --git-dir=$HOME/gitrepo/dotfiles.git --work-tree=$HOME'
-
 #apt
 alias up='sudo apt update'
 alias ug='sudo apt upgrade'
@@ -36,9 +32,11 @@ alias apts='sudo apt search'
 alias yta='youtube-dl -x --audio-format'
 
 #shortcut
+alias bc='bc -ql'
 alias fd='fdfind'
 alias bat='batcat --paging=never'
 alias ccat='highlight --out-format=ansi --force'
+alias py='python3'
 # Use neovim for vim if present.
 [ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
 

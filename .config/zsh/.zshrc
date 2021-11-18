@@ -14,17 +14,18 @@ setopt autocd
 #history
 HISTSIZE=10000000 
 SAVEHIST=10000000
-HISTFILE=~/.history
+HISTFILE=~/.cache/history
 
-parse_git_branch() {
+function parse_git_branch () {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ ( \1)/'; 
 }
 
 autoload -U colors && colors	# Load colors
+setopt PROMPT_SUBST
 # PS1='%n@%m:%~ $ '
 # PS1="%B%{$fg[red]%}[%{$fg[yellow]%}%n%{$fg[green]%}@%{$fg[blue]%}%M %{$fg[magenta]%}%~%{$fg[red]%}]%{$reset_color%}$%b "
 # PS1="%B%{$fg[blue]%}%n %{$fg[green]%}➜ %{$fg[cyan]%}[%~] %{$reset_color%}$ %b"
-PS1="%B%{$fg[blue]%}%n %{$fg[green]%}➜ %{$fg[cyan]%}%~ %{$fg[yellow]%}%{$(parse_git_branch)%}%{$reset_color%}$ %b"
+PS1='%B%{$fg[blue]%}%n %{$fg[green]%}➜ %{$fg[cyan]%}%~%{$fg[yellow]%}%{%"${$(parse_git_branch)//\%\%%}%"%} %{$reset_color%}$ %b'
 # PS1="%B%{$fg[blue]%}%n %{$fg[green]%}➜ %{$fg[cyan]%}%~ %{$fg[yellow]%}%{$(if git rev-parse --git-dir > /dev/null 2>&1; then echo 'git::( '; fi)%}%{$(git branch 2>/dev/null | grep '^*' | colrm 1 2)%}%{$(if git rev-parse --git-dir > /dev/null 2>&1; then echo ') '; fi)%}%{$reset_color%}$ %b"
 # ➜ ➞ ➔ ➤ 
 
@@ -67,6 +68,10 @@ zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.
 preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
+# Edit line in vim with ctrl-e:
+autoload edit-command-line; zle -N edit-command-line
+bindkey '^e' edit-command-line
+
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 #fzf completion
@@ -83,4 +88,4 @@ source ~/.config/shell/alias
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 #colorscript bin
-colorscript exec ghosts
+colorscript exec elfman

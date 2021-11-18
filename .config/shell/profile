@@ -16,12 +16,11 @@ export INPUTRC="${XDG_CONFIG_HOME:-$HOME/.config}/shell/inputrc"
 export WGETRC="$XDG_CONFIG_HOME"/wget/wgetrc
 export NPM_CONFIG_USERCONFIG=$XDG_CONFIG_HOME/npm/npmrc
 export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
-export ICEAUTHORITY="$XDG_CACHE_HOME"/ICEauthority
-#export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority # it doesn't work on dm
+#export XAUTHORITY="$XDG_RUNTIME_DIR"/Xauthority # it doesn't work on display manager
 
 # PATH
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$(find ~/Documents/scripts/ -type d -printf %p:):$PATH"
+export PATH="$(find ~/.local/bin/ -type d -printf %p:):$PATH"
+export PATH="$(find ~/scripts/ -type d -printf %p:):$PATH" 
 export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH="$CARGO_HOME/bin:$PATH"
@@ -40,6 +39,7 @@ export OPENER="xdg-open"
 export FZF_DEFAULT_COMMAND="find ! -path './.cache/*'"
 export MOZ_USE_XINPUT2="1"	              # Mozilla smooth scrolling/touchpads.
 export QT_QPA_PLATFORMTHEME=qt5ct         # Theme for qt apps
+# export QT_QPA_PLATFORMTHEME=gtk2        # qt app to follow gtk2 theme
 
 # Turn off Telemetry's
 #export DOTNET_CLI_TELEMETRY_OPTOUT=1  # Turn off microsoft telemetry

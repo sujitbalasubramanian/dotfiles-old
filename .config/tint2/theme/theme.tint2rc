@@ -174,7 +174,7 @@ clock_dwheel_command =
 # Battery
 battery_tooltip = 1
 battery_low_status = 10
-battery_low_cmd = xmessage 'tint2: Battery low!'
+battery_low_cmd = notify-send -u critical -i battery-empty 'Battery low!'
 battery_full_cmd = 
 bat1_font = FiraCode Nerd Font Bold 10
 bat2_font = Sans Bold 6

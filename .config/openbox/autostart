@@ -1,6 +1,6 @@
-fixscroll &
-tint2 -c ~/.config/tint2/theme/theme.tint2rc &
+/usr/bin/fixscroll &
 compton &
+feh --bg-scale --no-fehbg ~/.config/wall &
+tint2 -c ~/.config/tint2/theme/theme.tint2rc &
 pnmixer &
-nitrogen --restore &
 /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
