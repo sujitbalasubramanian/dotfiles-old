@@ -1,5 +1,5 @@
 "Terminal configuration
-set shell=\/bin\/bash\ -l
+set shell=\/bin\/zsh\ -l
 nnoremap th :sp +res10 term://bash<CR>
 nnoremap tv :vsp term://bash<CR>
 nnoremap tnt :tabnew term://bash<CR>

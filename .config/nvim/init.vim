@@ -9,10 +9,10 @@ set shiftwidth=4
 set smartindent
 set smartcase
 set expandtab
-set undodir=~/.local/share/nvim/undodir/
+set undodir=~/.cache/nvim/undodir/
 set undofile 
 set backup
-set backupdir=~/.local/share/nvim/backup//
+set backupdir=~/.cache/nvim/backup//
 set backupcopy=yes
 "set nobackup
 "set dir=~/.vim/swp/
@@ -36,7 +36,11 @@ set background=dark
 let g:sonokai_style = 'default'
 "sonokai themes = 'default' 'atlantis' 'andromeda' 'shusia' 'maia'
 let g:tokyonight_style = 'night' " available: night, storm
-colorscheme sonokai
+augroup CustomizeDracula
+  autocmd!
+  autocmd ColorScheme dracula highlight Normal guibg=#282A37
+augroup END
+colorscheme dracula
 "themes: monokai one-monokai one dracula codedark tokyonight sonokai
 
 "highlighting
@@ -52,7 +56,7 @@ colorscheme sonokai
 "  autocmd VimLeave * silent !echo -ne "\033]112\007"
 "endif
 
-"shortcuts and essentials
+"shortcuts and extras
 nnoremap i :nohls<cr>i
 "to clear last search let @/=""
 "autocmd InsertEnter * norm zz
@@ -100,7 +104,7 @@ nnoremap <Leader>ut :UndotreeToggle<CR>
 "fzf configuration
 let g:fzf_layout = {'up':'~90%', 'window': { 'width': 0.8, 'height':0.8,
       \'yoffset':0.5,'xoffset': 0.5, 'highlight': 'Todo', 'border': 'sharp' } }
-let $FZF_DEFAULT_COMMAND ='find'
+" let $FZF_DEFAULT_COMMAND ='find . -type f'
 " Ripgrep advanced
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case %s || true'
@@ -112,26 +116,56 @@ endfunction
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 autocmd! FileType fzf tnoremap <buffer> <esc> <c-c>
 
+nnoremap <A-f> :Files<CR>
+inoremap <A-f> <Esc>:Files <CR>
+
 "Indent line customization
 "let g:indentLine_char = '|'
 "let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 "let g:indentLine_leadingSpaceEnabled = 1
 "let g:indentLine_leadingSpaceChar = '·'
-let g:indentLine_fileTypeExclude = ["vimwiki", "coc-explorer", "help", "undotree", "diff"]
+let g:indentLine_fileTypeExclude = ["vimwiki", "markdown", "coc-explorer", "help", "undotree", "diff"]
 autocmd VimEnter,BufEnter * IndentLinesReset
+autocmd TermEnter,TermOpen * IndentLinesDisable
 
 "current word plugin configuration
 let g:vim_current_word#highlight_twins = 1
 let g:vim_current_word#highlight_current_word = 0
 
 "vim wiki configuration
-let g:vimwiki_list = [{'path': '~/.vim/vimwiki/',
-                      \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_table_mappings=0
+let g:vimwiki_global_ext = 0
+" let g:vimwiki_list = [{'path': '~/*',
+"                       \ 'syntax': 'markdown', 'ext': '.md'}]
+
+"vim hexokinase configuration
+let g:Hexokinase_highlighters = ['backgroundfull']
+
+"rainbow_parentheses configuration
+let g:rbpt_colorpairs = [
+    \ ['DarkMagenta',     'DarkOrchid'],
+    \ ['yellow',         'gold'],
+    \ ['lightblue',    'LightBlue'],
+    \ ]
+let g:rbpt_max = 20
+au VimEnter * RainbowParenthesesToggle
+au Syntax * RainbowParenthesesLoadRound
+au Syntax * RainbowParenthesesLoadSquare
+au Syntax * RainbowParenthesesLoadBraces
+
+"scratch.vim configuration
+let g:scratch_height=10
+let g:scratch_top=0
+let g:scratch_persistence_file='/tmp/scratch.vim'
+
+"MatchTagAlways configuration
+nnoremap <leader>% :MtaJumpToOtherTag<cr>
+
+"vCoolor configuration
 
 source ~/.config/nvim/plug-config/lightline.vim
 source ~/.config/nvim/plug-config/term.vim
 source ~/.config/nvim/plug-config/cocconfig.vim
-source /usr/share/doc/fzf/examples/fzf.vim
 
 call plug#begin('~/.config/nvim/plugged')
 
@@ -142,22 +176,25 @@ Plug 'crusoexia/vim-monokai'                    "monokai theme
 Plug 'sainnhe/sonokai'                          "sonokai theme
 Plug 'dracula/vim', { 'as': 'dracula' }         "dracula theme
 Plug 'fratajczak/one-monokai-vim'               "one monokai theme
-"Extra
-Plug 'vimwiki/vimwiki'                          "personal wiki
-"Distraction free writing
-Plug 'junegunn/goyo.vim'                        "focus writing
-Plug 'junegunn/limelight.vim'                   "focus writing
 "Development Tools
 Plug 'preservim/nerdtree'                       "nerd tree
 Plug 'ryanoasis/vim-devicons'                   "icons for tree
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'  "icon highlighting
-Plug 'terryma/vim-multiple-cursors'             "multi cursor for vim
 Plug 'itchyny/lightline.vim'                    "lightline statusbar
 Plug 'Yggdroot/indentLine'                      "specify indentation
+Plug 'kien/rainbow_parentheses.vim'             "bracket colorizer
 Plug 'dominikduda/vim_current_word'             "highlight variable
+Plug 'terryma/vim-multiple-cursors'             "multi cursor for vim
 Plug 'mbbill/undotree'                          "undo tree
+"fzf integration
 Plug 'junegunn/fzf.vim'                         "fzf integration
 Plug 'antoinemadec/coc-fzf'                     "coc+fzf integration
+"notes
+Plug 'vimwiki/vimwiki'                          "personal wiki
+Plug 'mtth/scratch.vim'                         "scratch pad
+"Distraction free writing
+Plug 'junegunn/goyo.vim'                        "focus writing
+Plug 'junegunn/limelight.vim'                   "focus writing
 "git integration
 Plug 'airblade/vim-gitgutter'                   "color signs
 Plug 'tpope/vim-fugitive'                       "git tool
@@ -172,15 +209,19 @@ Plug 'sheerun/vim-polyglot'                     "syntax for languages
 Plug 'uiiaoo/java-syntax.vim'                   "extra syntax for java
 Plug 'octol/vim-cpp-enhanced-highlight'         "extra syntax for c++
 Plug 'yuezk/vim-js'                             "extra syntax for js
+Plug 'maxmellon/vim-jsx-pretty'                 "highlighting for jsx
 "Auto Completion
 Plug 'neoclide/coc.nvim', {'branch': 'release'} "autocomplete for nvim
 Plug 'honza/vim-snippets'                       "snippets 
 "Web Development Tools
-Plug 'turbio/bracey.vim',{'do': 'npm install --prefix server'} "live preview
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install'  }
-Plug 'mattn/emmet-vim'                          "emmet for vim
-Plug 'alvan/vim-closetag'                       "auto close tag
-Plug 'tpope/vim-surround'                       "auto rename tag + extra
+Plug 'valloric/MatchTagAlways'                                          "match html tags
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }               "colorizer
+Plug 'turbio/bracey.vim',{'do': 'npm install --prefix server'}          "live preview
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && yarn install' } "markdown preview
+Plug 'mattn/emmet-vim'                                                  "emmet for vim
+Plug 'alvan/vim-closetag'                                               "auto close tag
+Plug 'tpope/vim-surround'                                               "auto rename tag + extra
+Plug 'KabbAmine/vCoolor.vim'                                            "color picker
 
 call plug#end()
 

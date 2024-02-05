@@ -1,6 +1,4 @@
-/usr/bin/fixscroll &
-compton &
-feh --bg-scale --no-fehbg ~/.config/wall &
-tint2 -c ~/.config/tint2/theme/theme.tint2rc &
-pnmixer &
-/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+#!/bin/sh
+
+tint2 -c ~/.config/tint2/dracula/dracula.tint2rc &
+~/.local/bin/scripts/wall/setwall &

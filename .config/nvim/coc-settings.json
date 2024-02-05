@@ -1,6 +1,24 @@
 {
+  // "python.pythonPath": "/bin/python3.10",
+  // "python.formatting.provider": "none",
+  //enable coc-highlight
+  "colors.filetypes": [
+    "*"
+  ],
+  //enable prettier
+  "prettier.enable": false,
+  //"snippets.ultisnips.directories": ["UltiSnips", "~/.vim/UltiSnips/"],
+  "snippets.userSnippetsDirectory": "~/.config/nvim/snips/",
+  //bracket pair
+  "pairs.enableCharacters": [
+    "(",
+    "[",
+    "{",
+    "'",
+    "\"",
+    "`"
+  ],
   //file formatting
-  "pairs.enableCharacters": ["(", "[", "{", "'", "\"", "`"],
   "coc.preferences.formatOnSaveFiletypes": [
     "css",
     "markdown",
@@ -13,11 +31,9 @@
     "python",
     "sql"
   ],
-  "coc.preferences.formatOnType": true,
-
-  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
-
+  "coc.preferences.formatOnType": false,
   //symbols for autocompletion
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "suggest.completionItemKindLabels": {
     "method": "  ",
     "function": "  ",
@@ -45,13 +61,11 @@
     "value": "  ",
     "enumMember": "  "
   },
-
   //symbols for diagnostics
   "diagnostic.infoSign": "i",
   "diagnostic.hintSign": "➤",
   "diagnostic.warningSign": "⚠",
   "diagnostic.errorSign": "✖",
-
   //coc-explorer
   "explorer.icon.enableNerdfont": true,
   "explorer.quitOnOpen": false,
@@ -62,64 +76,74 @@
   "explorer.keyMappings.global": {
     "gk": "expandablePrev",
     "gj": "expandableNext",
-
     "<space>": "toggleSelection",
     "<tab>": "actionMenu",
-
     "h": "collapse",
-    "l": ["expandable?", "expand", "open"],
-    "J": ["toggleSelection", "nodeNext"],
-    "K": ["toggleSelection", "nodePrev"],
-    "<2-LeftMouse>": [
+    "l": [
       "expandable?",
-      ["expanded?", "collapse", "expand"],
+      "expand",
       "open"
     ],
-    "o": ["expanded?", "collapse", "expand"],
-    "<cr>": ["expandable?", "cd", "open"],
+    "J": [
+      "toggleSelection",
+      "nodeNext"
+    ],
+    "K": [
+      "toggleSelection",
+      "nodePrev"
+    ],
+    "<2-LeftMouse>": [
+      "expandable?",
+      [
+        "expanded?",
+        "collapse",
+        "expand"
+      ],
+      "open"
+    ],
+    "o": [
+      "expanded?",
+      "collapse",
+      "expand"
+    ],
+    "<cr>": [
+      "expandable?",
+      "cd",
+      "open"
+    ],
     "H": "open:split",
     "S": "open:split:plain",
     "V": "open:vsplit",
     "<bs>": "gotoParent",
-
     "Y": "copyFile",
     "X": "cutFile",
     "P": "pasteFile",
     "dd": "delete",
-
     "mf": "addFile",
     "md": "addDirectory",
     "r": "rename",
-
     ".": "toggleHidden",
     "R": "refresh",
-
     "?": "help",
     "q": "quit",
     "<esc>": "esc",
     "!": "systemExecute",
     "gd": "listDrive",
-
     "f": "search",
     "F": "searchRecursive",
-
     "gf": "gotoSource:file",
     "gb": "gotoSource:buffer",
-
     "[[": "sourcePrev",
     "]]": "sourceNext",
-
     "gp": "gitPrev",
     "gn": "gitNext",
     "ga": "gitStage",
     "gr": "gitUnstage"
   },
-
-  // python config
-  "python.linting.enabled": true,
-  "python.linting.pylintEnabled": true,
-
-  //"snippets.ultisnips.directories": ["UltiSnips", "~/.vim/UltiSnips/"],
-  "snippets.userSnippetsDirectory": "~/.config/nvim/snips/",
-  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/13.0.0/clangd_13.0.0/bin/clangd"
+  "java.imports.gradle.wrapper.checksums": [
+    {
+      "sha256": "e2b82129ab64751fd40437007bd2f7f2afb3c6e41a9198e628650b22d5824a14",
+      "allowed": true
+    }
+  ]
 }

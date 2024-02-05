@@ -1,10 +1,10 @@
 let g:coc_global_extensions = [
       \ 'coc-json', 'coc-html', 'coc-css', 'coc-emmet',
-      \ 'coc-tsserver', 'coc-html-css-support', 'coc-sql',
+      \ 'coc-tsserver', 'coc-html-css-support',
+      \ 'coc-clangd', 'coc-java', 'coc-r-lsp',
+      \ 'coc-vimlsp', 'coc-sh', 'coc-pyright',
       \ 'coc-markdown-preview-enhanced', 'coc-webview',
-      \ 'coc-clangd', 'coc-java', 'coc-r-lsp', 'coc-vimlsp',
-      \ 'coc-jedi', 'coc-lua', 'coc-sh',
-      \ 'coc-explorer', 'coc-highlight', 'coc-prettier',
+      \ 'coc-explorer', 'coc-prettier', 'coc-highlight',
       \ 'coc-pairs', 'coc-snippets', 'coc-marketplace'
       \]
 
@@ -24,7 +24,7 @@ set hidden
 
 " Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 " delays and poor user experience.
-"set updatetime=300
+set updatetime=300
 
 " Don't pass messages to |ins-completion-menu|.
 "set shortmess+=c
@@ -33,7 +33,7 @@ set hidden
 " diagnostics appear/become resolved.
 if has("nvim-0.5.0") || has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
-  set signcolumn=number
+  set signcolumn=auto
 else
   set signcolumn=yes
 endif
@@ -42,12 +42,18 @@ endif
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-function! s:check_back_space() abort
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm()
+      \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" Use <c-space> to trigger completion.
+function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
@@ -58,11 +64,6 @@ if has('nvim')
 else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
-
-" Make <CR> auto-select the first completion item and notify coc.nvim to
-" format on enter, <cr> could be remapped by other vim plugin
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
@@ -76,20 +77,19 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call ShowDocumentation()<CR>
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
+function! ShowDocumentation()
+  if CocAction('hasProvider', 'hover')
     call CocActionAsync('doHover')
   else
-    execute '!' . &keywordprg . " " . expand('<cword>')
+    call feedkeys('K', 'in')
   endif
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
+command! -nargs=0 Pickcolor :call CocAction('pickColor')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -182,7 +182,7 @@ nnoremap <silent><nowait> <Leader>e :<C-u>CocDiagnostics<CR>
 "marketplace
 nnoremap <silent><nowait> <space>m :<C-u>CocList marketplace<CR>
 "coc-explorer
-noremap <silent> <A-f> :CocCommand explorer<CR>
+noremap <silent> <A-t> :CocCommand explorer<CR>
 
 xmap <leader>f  <Plug>(coc-format)
 nmap <leader>f  <Plug>(coc-format)
@@ -191,9 +191,9 @@ nmap <leader>f  <Plug>(coc-format)
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 "coc-snippets configuration
-"imap <C-l> <Plug>(coc-snippets-expand)
-let g:coc_snippet_next = '<Tab>'
-let g:coc_snippet_prev = '<S-Tab>'
+imap <C-l> <Plug>(coc-snippets-expand)
+let g:coc_snippet_next = '<C-j>'
+let g:coc_snippet_prev = '<C-k>'
 xmap <leader>x  <Plug>(coc-convert-snippet)
 
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}

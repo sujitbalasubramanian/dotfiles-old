@@ -11,12 +11,12 @@
         <separator />
         <item label="Terminal emulator">
             <action name="Execute">
-                <execute>x-terminal-emulator</execute>
+                <execute>kitty</execute>
             </action>
         </item>
         <item label="Web browser">
             <action name="Execute">
-                <execute>x-www-browser</execute>
+                <execute>firefox</execute>
             </action>
         </item>
         <item label="File manager">
