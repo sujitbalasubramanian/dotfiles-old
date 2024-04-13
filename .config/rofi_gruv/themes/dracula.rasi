@@ -1,0 +1,152 @@
+/* Dracula theme with border */
+
+* {
+    background: #282a36;
+    current-line: #44475a;
+    selection: #44475a;
+    foreground: #f8f8f2;
+    comment: #6272a4;
+    cyan: #8be9fd;
+    green: #50fa7b;
+    orange: #ffb86c;
+    pink: #ff79c6;
+    purple: #bd93f9;
+    red: #ff5555;
+    yellow: #f1fa8c;
+
+    bg: @background;
+    bg-alt: @current-line;
+    fg: @foreground;
+    fg-alt: @comment;
+    border-color: @purple;
+
+    inp-bar-bg: @bg-alt;
+    prompt-fg: @green;
+
+    sel-bg: @green;
+    sel-fg: @bg;
+    normal-bg: @bg;
+    normal-fg: @fg;
+    alt-bg: @bg;
+    alt-fg: @fg;
+
+    btn-bg: @bg;
+    btn-fg: @fg;
+    btn-sel-fg: @bg;
+    btn-sel-bg: @cyan;
+
+    background-color: @bg;
+}
+
+window {
+    background-color: @bg;
+    padding: 0px 0px 10px 0px;
+}
+mainbox {
+    background-color: @bg;
+}
+
+message {
+    border: 2px 0px;
+    border-color: @border-color;
+    padding: 5px;
+}
+textbox {
+    text-color: @fg;
+}
+
+listview {
+    fixed-height: 0;
+    spacing: 2px ;
+    padding: 5px 0px 0px ;
+    background-color: @bg;
+    scrollbar: false;
+}
+element {
+    text-color: @fg;
+    padding: 1px 10px 1px 10px;
+}
+element-icon {
+    size: 25;
+}
+element-icon,element-text {
+    vertical-align: 0.5;
+    background-color: inherit;
+    text-color: inherit;
+}
+element normal {
+    background-color: @normal-bg;
+    text-color: @normal-fg;
+}
+element selected {
+    background-color: @sel-bg;
+    text-color: @sel-fg;
+}
+element alternate {
+    background-color: @alt-bg;
+    text-color: @alt-fg;
+}
+scrollbar {
+    width: 4px;
+    border: 0;
+    handle-color: @fg;
+    handle-width: 8px;
+    padding: 0;
+}
+
+mode-switcher{
+    padding: 5px 5px 0px 5px;
+}
+button {
+    text-color: @btn-fg;
+    background-color: @btn-bg;
+}
+button selected {
+    background-color: @btn-sel-bg;
+    text-color: @btn-sel-fg;
+}
+
+inputbar {
+    spacing: 0;
+    text-color: @fg;
+    background-color: @inp-bar-bg;
+    padding: 10px ;
+    children: [ prompt,textbox-prompt-colon,entry,indicator,case-indicator];
+}
+prompt {
+    spacing: 0;
+    text-color: @prompt-fg;
+    background-color: inherit;
+}
+entry {
+    spacing: 0;
+    text-color: @fg;
+    background-color: inherit;
+}
+case-indicator {
+    spacing: 0;
+    text-color: @fg;
+    background-color: inherit;
+}
+textbox-prompt-colon {
+    expand: false;
+    str: " --> ";
+    margin: 0px 0em 0em 0em ;
+    text-color: @prompt-fg;
+    background-color: inherit;
+}
+indicator{
+    children: [ num-filtered-rows, textbox-sep, num-rows];
+    orientation: horizontal;
+    expand: false;
+    padding: 0 10px;
+    background-color: inherit;
+}
+num-filtered-rows, textbox-sep, num-rows {
+    text-color: @fg;
+    background-color: inherit;
+    expand: false;
+    str: "/";
+    vertical-align: 0.5;
+    padding: 0 2px;
+}
